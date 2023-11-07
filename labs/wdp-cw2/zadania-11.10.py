@@ -126,3 +126,19 @@ while i < n:
         # out += f'{i}, '
 
 # print(out)
+
+
+# ZADANIE DODATKOWE: Implementacja schematu mnożenia rosyjskich chłopów.
+
+a = 4
+b = 8
+wynik = 0
+
+while b > 0:
+    if b % 2 == 1:
+        wynik += a 
+    a *= 2
+    b /= 2
+
+print(wynik)
+
