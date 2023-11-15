@@ -64,6 +64,3 @@ print()
 result = find_max(list1)
 print(result * 2)
 print()
-
-
-
