@@ -40,17 +40,18 @@ for i in range(10):
     lst.append(random.randint(1, 10))
 # Prints random items
 print(lst)
-
+'''
 
 # ZADANIE 2
 
 print()
-samogłoski = ["a", "A", "ą", "Ą", "e", "E", "ę", "Ę", "i", "I", "o", "O", "u", "U", "ó", "Ó", "y", "Y"]
-słowo = "DaniEl"
+print("ZADANIE 2")
+vowel_list = ["a", "ą", "e", "ę", "i", "o", "u" "ó",
+              "y", "A", "Ą", "E", "Ę", "I", "O", "U", "Ó", "Y"]
+word = "RabArBAr"
 i = 0
-
-for znak in słowo:
-    if znak in samogłoski:
+for vowel in word:
+    if vowel in vowel_list:
         i += 1
 print("ilość samogłosek w słowie wynosi:", i)
 print()
@@ -58,72 +59,80 @@ print()
 
 # ZADANIE 3
 
-numbers_list = [1, 2, 4, 6, 8, 9]
+print("ZADANIE 3")
+num_list = [23, 65, 28, 2, 4, 94]
 sum = 0
-
-for number in numbers_list:
-    sum += number
-print("suma elementów należących do listy wynosi:", sum)
+for num in num_list:
+    sum += num
+print(sum)
 print()
 
 
 # ZADANIE 4
 
-numbers_list = [1, 2, 4, 6, 8, 9]
+print("ZADANIE 4")
+num_list = [2, 7, 10, 4]
 mul = 1
-
-for number in numbers_list:
-    mul *= number
-print("iloczyn elementów należących do listy wynosi:", mul)
+for num in num_list:
+    mul *= num
+print(mul)
 print()
 
 
 # ZADANIE 5
 
-numbers_list = [1, 6, 12, 45, 89]
-print("Największa wartość należąca do danej listy liczb wynosi:", max(numbers_list))
+print("ZADANIE 5")
+num_list = [2, 84, 271, 8, 591]
+max_element = num_list[0]
+for element in range(len(num_list)):
+    if num_list[element] > max_element:
+        max_element = num_list[element]
+print(max_element)
 print()
 
 
 # ZADANIE 6
 
-numbers_list = [1, 6, 12, 45, 89]
-min_value = min(numbers_list)
-
-print("Najmniejsza wartość należąca do danej listy liczb wynosi:", min_value, "oraz jej indeks to:", numbers_list.index(min_value))
+print("ZADANIE 6")
+num_list = [235, 434, 124, 850, 321]
+min_element = num_list[0]
+for element in range(len(num_list)):
+    if num_list[element] < min_element:
+        min_element = num_list[element]
+print(min_element, num_list.index(min_element))
 print()
 
 
 # ZADANIE 7
 
-numbers_list = [4, 7, 2, 9, 6, 8]
-max_value1 = numbers_list[0]
-max_value2 = 0
-
-for number in numbers_list:
-    if number > max_value1:
-        max_value1, max_value2 = number, max_value1
-    elif number > max_value2:
-        max_value2 = number
-print("Druga największa wartość na liście wynosi:", max_value2,
-      "oraz jej indeks to:", numbers_list.index(max_value2))
+print("ZADANIE 7")
+num_list = [4, 7, 2, 9, 6, 8]
+max_element = num_list[0]
+second_max_element = num_list[0]
+for element in range(len(num_list)):
+    if num_list[element] > max_element:
+        max_element = num_list[element]
+    elif num_list[element] > second_max_element:
+        second_max_element = num_list[element]
+print(second_max_element, num_list.index(second_max_element))
 print()
-
 
 # ZADANIE 8
 
-words_list = ["jeden", "dwa", "trzy", "cztery", "pięć"]
-
+print("ZADANIE 8")
+print()
+words_list = ["laptop", "butelka", "lampa", "ala", "jo"]
 for word in words_list:
     if len(word) > 3:
-        print(word, end=", ")
+        print(word)
 print()
+
 
 # ZADANIE 9
 
-list1 = [1, 56, 90, "a", "b", "c"]
-list2 = [4, 89, 90, "c", "d", "e"]
-
+print("ZADANIE 9")
+list1 = ["butelka", 289, 27, "telefon"]
+list2 = [8848, "biurko", 345, "butelka"]
 similar_element = 0
 
 for element in list1:
@@ -138,32 +147,86 @@ print()
 
 # ZADANIE 10
 
-numbers_list = [1, 4, 7, 8, 9, 11]
-
-odd_numbers = []
-
-for number in numbers_list:
-    if number % 2 != 0:
-        odd_numbers.append(number)
-print(odd_numbers)
+print("ZADANIE 10")
+num_list = [12, 483, 2821, 248, 76]
+for num in num_list:
+    if num % 2 != 0:
+        print(num, end=" ")
 print()
 
 
 # ZADANIE 11
 
-.
+print()
+print("ZADANIE 11")
+jedności = ["", "jeden", "dwa", "trzy", "cztery",
+            "pięć", "sześć", "siedem", "osiem", "dziewięć"]
+nastki = ["", "jedenaście", "dwanaście", "trzynaście", "czternaście",
+          "piętnaście", "szesnaście", "siedemnaście", "osiemnaście", "dziewiętnaście"]
+dziesiątki = ["", "dziesięć", "dwadzieścia", "trzydzieści", "czterdzieści",
+              "pięćdziesiąt", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewięćdziesiąt"]
+setki = ["", "sto", "dwieście", "trzysta", "czterysta",
+         "pięćset", "sześćset", "siedemset", "osiemset", "dziewięćset"]
+liczba = 372
+
+for liczba in range(liczba, liczba + 1):
+    słownie = ""
+
+    # Zapisanie oryginalnej liczby
+    oryginalna_liczba = liczba
+
+    # Konwersja setek
+    słownie += setki[liczba // 100] + " "
+    liczba %= 100
+
+    # Konwersja dziesiątek i jedności
+    if liczba >= 10 and liczba < 20:
+        słownie += nastki[liczba - 10]
+        liczba = 0  # Zerujemy liczbę, bo już obsłużyliśmy jednostki w przypadku nastek
+    else:
+        słownie += dziesiątki[liczba // 10] + " "
+        liczba %= 10
+        słownie += jedności[liczba]
+
+    print(oryginalna_liczba, "=", słownie)
+print()
 
 
 # ZADANIE 12
 
-.
+print("ZADANIE 12")
+word = "rabarbar"
+pattern = "ab"
 
-'''
+found = False
+
+for i in range(len(word) - len(pattern) + 1):
+    match = True
+    for j in range(len(pattern)):
+        if word[i + j] != pattern[j]:
+            match = False
+            break
+    if match:
+        found = True
+        break
+
+if found:
+    print("TAK")
+else:
+    print("NIE")
+print()
+
+
 # ZADANIE 13
 
-words_list = ["radar", "potop", "zakaz", "kajak", "zaraz"]
-
-#palindromes = []
-
-#for word in words_list:
-#    if 
+print("ZADANIE 13")
+palindromes = ["kajak", "anna", "oko", "afsasf"]
+'''
+for word in palindromes:
+    for i in range(len(word) // 2):
+        if word[i] == word[len(word) - 1 - i]:
+            print("słowo",word, "to palindrom.")
+        else:
+            print("To nie jest palindrom.")
+print()
+'''
