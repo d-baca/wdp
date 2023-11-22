@@ -242,6 +242,21 @@ for element in range(len(num_list)):
 print(second_max_value)
 print()
 
+                    # jak wszystkie wartości są takie same, to trzeba dodać warunek None
+
+num_list = [1, 1, 1, 1, 1]
+max_value = num_list[0]
+second_max_value = None
+
+for element in range(len(num_list)):
+    if num_list[element] > max_value:
+        max_value, second_max_value = num_list[element], max_value
+    elif second_max_value is None and num_list[element] < max_value:
+        second_max_value = num_list[element]
+    elif second_max_value != None and num_list[element] > second_max_value and num_list[element] != max_value:
+        second_max_value = num_list[element]
+print(second_max_value)
+print()
 
 # ZADANIE 13
 print("ZADANIE 13")
@@ -286,4 +301,4 @@ while list_length > 1:
     if swap == False:
         break
 print(list3)
-
+print()
