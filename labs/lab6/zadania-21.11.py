@@ -75,7 +75,7 @@ print(result)
 print()
 
 
-# ZADANIE 5 ------------------------- ZROBIĆ DODATKOWO BEZ UŻYCIA ::-1
+# ZADANIE 5
 print("ZADANIE 5")
 
 
@@ -86,6 +86,21 @@ def reversed_word_function(word):
 
 word = "wirus"
 result = reversed_word_function(word)
+print(result)
+print()
+
+# ------------ drugi sposób (bez użycia ::-1) ------------ 
+
+def reversed_string_function(original_string):
+    reversed_string = ""
+
+    for char in original_string:
+        reversed_string = char + reversed_string
+
+    return reversed_string
+
+original_string = "wirus"
+result = reversed_string_function(original_string)
 print(result)
 print()
 
@@ -113,14 +128,18 @@ print("ZADANIE 7")
 
 def no_duplicates_function(list_with_duplicates):
     list_without_duplicates = []
+
     for i in range(len(list_with_duplicates)):
         is_duplicate = False
+
         for j in range(i):
             if list_with_duplicates[j] == list_with_duplicates[i]:
                 is_duplicate = True
                 break
+
         if is_duplicate == False:
             list_without_duplicates.append(list_with_duplicates[i])
+
     return list_without_duplicates
 
 
@@ -173,9 +192,24 @@ print()
 
 # ZADANIE 10
 print("ZADANIE 10")
+
+
+def is_pangram(pangram):
+    alphabet_list = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    is_or_no = True
+
+    for char in alphabet_list:
+        if char not in pangram:
+            is_or_no = False
+            break
+        
+    return is_or_no
+
+
+pangram_test = "The quick brown fox jumps over the lazy dog"
+result = is_pangram(pangram_test)
+print(result)
 print()
-# alphabet_list = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
-#                  "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
 
 # ZADANIE 11
@@ -196,7 +230,7 @@ print()
 print("ZADANIE 12")
 print()
 # def is_sorted(list):
-
+    
 # list = [1, 2, 4, 7, 3, 2, 1, 8]
 
 # ZADANIE 13

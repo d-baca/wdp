@@ -3,7 +3,7 @@
 # tablica dwuwymiarowa z zagnieżdżonymi pętlami for
 
 macierz = [[1, 2, 3],
-              [4, 5, 6]]    # lista, której elementami są inne listy
+           [4, 5, 6]]    # lista, której elementami są inne listy
 
 
 print("\n----------- pętle zagnieżdżone - for - START ----------")

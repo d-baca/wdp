@@ -1,6 +1,6 @@
 # WSTĘP DO PROGRAMOWANIA WYKŁAD 6
 
-# słowniki 
+# słowniki
 
 silnik = {
     "pojemność_silnika": 3000,
@@ -32,7 +32,7 @@ panJan = {
 }
 
 
-# wywoływanie 
+# wywoływanie
 
 print(panJan["nazwisko"])
 print(panJan["rok_ur"])
@@ -53,7 +53,7 @@ print()
 
 miasto1 = {
     "nazwa": "Gdańsk",
-    "liczba_mieszkańców": 486 # w tysiącach
+    "liczba_mieszkańców": 486  # w tysiącach
 }
 
 miasto2 = {
@@ -82,11 +82,13 @@ państwo1 = {
 
 # definiowanie funkcji tworzenia miast
 
+
 def stwórz_miasto(nazwa, ludność):
     return {
         "nazwa": nazwa,
         "liczba_mieszkańców": ludność,
     }
+
 
 państwo2 = {
     "nazwa": "Niemcy",
@@ -97,6 +99,7 @@ państwo2 = {
 
 db = [państwo1, państwo2]
 
+
 def dodaj_państwo(baza, nazwa, ludność, stolica, miasta):
     baza.append({
         "nazwa": nazwa,
@@ -106,27 +109,28 @@ def dodaj_państwo(baza, nazwa, ludność, stolica, miasta):
     })
 
 ###################
-# wiek = 34       #   
-# def policz():   # 
+# wiek = 34       #
+# def policz():   #
 #     global wiek #
-#     # ...       #  
+#     # ...       #
 #     wiek = 67   #  zmienne globalne, odczyt
-#     # ...       #  
-#     return 24   #  
-# policz()        #  
-# print(wiek)     #  
+#     # ...       #
+#     return 24   #
+# policz()        #
+# print(wiek)     #
 ###################
 
+
 dodaj_państwo(db, "Czechy", 10500, stwórz_miasto("Praga", 1357),
-    [
-    stwórz_miasto("Budiejowice", 94.5), stwórz_miasto("Brno", 380)
-])
+              [stwórz_miasto("Budiejowice", 94.5), stwórz_miasto("Brno", 380)])
 print(db)
 print()
 
 
 # znajdź (tj. napisz funkcję, która wyznaczy) państwo z najludniejszą stolicą.
+
 # znajdź (tj. napisz funkcję, która wyznaczy) największe miasto w bazie.
+
 # znajdź państwo z największą liczbą ludności w miastach.
 
 
@@ -136,6 +140,8 @@ def suma_mieszkańców_miast(db):
         for miasto in kraj["miasta"]:
             suma += miasto["liczba_mieszkańców"]
     return suma
+
+
 print(suma_mieszkańców_miast(db))
 print()
 
