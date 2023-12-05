@@ -169,7 +169,7 @@ def last_sorted_while(list, x):
         mid = (start + end) // 2
         if list[mid] == x:
             last_index = mid
-            start = mid + 1
+            start = mid + 1  # powinien być while
         elif list[mid] < x:
             start = mid + 1
         else:
@@ -178,7 +178,7 @@ def last_sorted_while(list, x):
     return f"ostatnie wystąpienie liczby {x} jest na miejscu o indeksie {last_index}"
 
 
-sorted_list = [1, 2, 3, 4, 4, 5, 6, 6, 6, 8]
+sorted_list = [1, 2, 3, 4, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6]
 result = last_sorted_while(sorted_list, 6)
 print(result)
 print()
@@ -262,19 +262,128 @@ print()
 print("ZADANIE 6")
 print()
 
+'''
+def count_sorted_while(list, x):        # naprawić
+    smaller, equal, bigger = 0, 0, 0
+    start = 0
+    end = len(list) - 1
+    
+    while start <= end:
+        mid = (start + end) // 2
+        if list[mid] < x:
+            smaller += 1
+            start = mid + 1
+        elif list[mid] == x:
+            equal += 1
+            start = mid + 1
+        else:
+            bigger += 1
+            end = mid - 1
+    
+    return f"{smaller} mniejszych od {x}\n{equal} równych {x}\n{bigger} większych od {x}"
+
+
+list1 = [1, 2, 2, 3, 4, 5, 5, 5, 5, 5, 7, 9]
+res = count_sorted_while(list1, 5)
+print(res)
+print()'''
+
 
 # ZADANIE 7 wyznaczyć miejsce zerowe funkcji f(x) = x^3 - 2*x^2 + x - 7, przyjmuję, że znajduje się w przedziale [0, 3].
 print("ZADANIE 7")
+
+
+# f(0) = -7 i f(3) = 5
+a = 0
+b = 3
+epsilon = 0.0001
+
+while abs(a - b) > epsilon:
+    root = (a + b) / 2
+
+    if abs(root**3 - 2 * root**2 + root - 7) <= epsilon:
+        break
+    elif (root**3 - 2 * root**2 + root - 7) * (-455) < 0:  # f(x1) * f(a)
+        b = root
+    else:
+        a = root
+
+print(root)
 print()
 
 
 # ZADANIE 8
 print("ZADANIE 8")
+
+
+def does_sqrt_exist(lst, x):
+    d, g = 1, x
+
+    while d <= g:
+        j = (d + g) // 2
+
+        if j * j == x:
+            return f"exists"
+        elif j * j < x:
+            d = j + 1
+            # przesuwamy się w prawo jeżeli szukana wartość nie znajduje się po lewej
+        else:
+            g = j - 1
+            # przesuwamy się w lewo jeżeli szukana wartość nie znajduje się po prawej
+
+    return f"do not exist"
+
+
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+           14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+result = does_sqrt_exist(my_list, 23)
+print(result)
 print()
+
+
+'''def does_sqrt_exist(lst, x):
+    j = 1
+
+    while j * j <= x:
+        if j * j == x:
+            return f"exists"
+        elif j * j < x:
+            j += 1
+
+    return f"do not exist"
+
+
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+           14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+result = does_sqrt_exist(my_list, 9)
+print(result)
+print()'''
 
 
 # ZADANIE 9
 print("ZADANIE 9")
+
+
+def sort_by_picking(lst):
+    res_list = []
+
+    while len(lst) > 0:
+        max_elem = lst[0]
+
+        # find max
+        for i in range(len(lst)):
+            if lst[i] > max_elem:
+                max_elem = lst[i]
+        
+        lst.remove(max_elem)
+        res_list.append(max_elem)
+
+    return res_list[::-1]
+
+
+my_list = [1, 6, 3, 8, 9, 8, 11]
+res = sort_by_picking(my_list)
+print(res)
 print()
 
 
@@ -292,13 +401,9 @@ def bubble_sort(list):
                 # list[j + 1] = list[j]
                 # auxiliary_variable = list[j]
     return list
-    
+
+
 list = [1, 6, 3, 8, 9, 8]
 result = bubble_sort(list)
 print(result)
 print()
-
-
-
-
-

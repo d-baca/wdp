@@ -89,7 +89,8 @@ result = reversed_word_function(word)
 print(result)
 print()
 
-# ------------ drugi sposób (bez użycia ::-1) ------------ 
+# ------------ drugi sposób (bez użycia ::-1) ------------
+
 
 def reversed_string_function(original_string):
     reversed_string = ""
@@ -98,6 +99,7 @@ def reversed_string_function(original_string):
         reversed_string = char + reversed_string
 
     return reversed_string
+
 
 original_string = "wirus"
 result = reversed_string_function(original_string)
@@ -195,14 +197,15 @@ print("ZADANIE 10")
 
 
 def is_pangram(pangram):
-    alphabet_list = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    alphabet_list = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+                     "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     is_or_no = True
 
     for char in alphabet_list:
         if char not in pangram:
             is_or_no = False
             break
-        
+
     return is_or_no
 
 
@@ -228,10 +231,22 @@ print()
 
 # ZADANIE 12
 print("ZADANIE 12")
+
+
+def is_sorted(list):
+    for element in range(len(list) - 1):
+        if list[element] > list[element + 1]:
+            return False
+
+    else:
+        return True
+
+
+list = [1, 2, 4, 7, 30, 221, 549, 549, 549, 800]
+res = is_sorted(list)
+print(res)
 print()
-# def is_sorted(list):
-    
-# list = [1, 2, 4, 7, 3, 2, 1, 8]
+
 
 # ZADANIE 13
 print("ZADANIE 13")
@@ -309,7 +324,7 @@ def is_positive(a, b, c):
 def triangle_function(a, b, c):
     positive_result = is_positive(a, b, c)
     print(positive_result)
-    
+
     if a + b > c and a + c > b and b + c > a:
         return 1
     else:
@@ -319,3 +334,4 @@ def triangle_function(a, b, c):
 result = triangle_function(10, 10, 10)
 print(result)
 print()
+
