@@ -35,7 +35,6 @@ print("ZADANIE 1")
 
 # sposób z pętlą for
 
-
 def generate_random_for(n):
     result_list = []
 
@@ -167,9 +166,10 @@ def last_sorted_while(list, x):
 
     while start <= end:
         mid = (start + end) // 2
+        
         if list[mid] == x:
             last_index = mid
-            start = mid + 1  # powinien być while
+            start = mid + 1
         elif list[mid] < x:
             start = mid + 1
         else:
@@ -178,8 +178,8 @@ def last_sorted_while(list, x):
     return f"ostatnie wystąpienie liczby {x} jest na miejscu o indeksie {last_index}"
 
 
-sorted_list = [1, 2, 3, 4, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6]
-result = last_sorted_while(sorted_list, 6)
+sorted_list = [1, 2, 3, 4, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7]
+result = last_sorted_while(sorted_list, 7)
 print(result)
 print()
 
@@ -202,8 +202,8 @@ def last_sorted_for(list, y):
     return f"ostatnie wystąpienie liczby {y} jest na miejscu o indeksie {last_index}"
 
 
-sorted_list = [1, 2, 3, 4, 4, 5, 6, 6, 6, 6, 8]
-result = last_sorted_for(sorted_list, 6)
+sorted_list = [1, 2, 3, 4, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+result = last_sorted_for(sorted_list, 4)
 print(result)
 print()
 
@@ -260,33 +260,84 @@ print()
 
 # ZADANIE 6
 print("ZADANIE 6")
-print()
 
-'''
-def count_sorted_while(list, x):        # naprawić
-    smaller, equal, bigger = 0, 0, 0
-    start = 0
-    end = len(list) - 1
+
+def count_sorted(sorted_lst, x):
+    # w tej funkcji (głównej) zebrane są wszystkie informacje, tzn. ile równych x, mniejszych od x, większych od x.
+    if x > sorted_lst[-1]:
+        return len(sorted_lst), 0, 0
+    elif x < sorted_lst[0]:
+        return 0, 0, len(sorted_lst)
+
+    def first_occurrence_function(lst, target):
+        # wyszukuje indeks pierwszego wystąpienia wartości target w posortowanej liście.
+        # jeśli target nie istnieje, zwraca 0.
+
+        start = 0
+        end = len(lst) - 1
+        first_occurrence = 0
+
+        while start <= end:
+            mid = (start + end) // 2
+
+            if lst[mid] < target:
+                start = mid + 1
+            elif lst[mid] == target:
+                first_occurrence = mid
+                end = mid - 1  # przesuwamy się do "lewej" strony listy
+            else:
+                end = mid - 1
+
+        return first_occurrence  # pierwsze wystąpienie wartości target
     
-    while start <= end:
-        mid = (start + end) // 2
-        if list[mid] < x:
-            smaller += 1
-            start = mid + 1
-        elif list[mid] == x:
-            equal += 1
-            start = mid + 1
+
+    def last_occurrence_function(lst, target):
+        # wyszukuje indeks ostatniego wystąpienia wartości target w posortowanej liście.
+        # jeśli target nie istnieje, zwraca 0.
+
+        start = 0
+        end = len(lst) - 1
+        last_occurrence = 0
+
+        while start <= end:
+            mid = (start + end) // 2
+
+            if lst[mid] < target:
+                start = mid + 1
+            elif lst[mid] == target:
+                last_occurrence = mid
+                start = mid + 1  # przesuwamy się do "prawej" strony listy
+            else:
+                end = mid - 1
+
+        return last_occurrence  # ostatnie wystąpienie wartości target
+             
+    def count_occurrences_function(lst, target):
+        # zlicza liczbę wystąpień wartości target w liście (posortowanej).
+
+        first_occurrence = first_occurrence_function(lst, target)
+        last_occurrence = last_occurrence_function(lst, target)
+
+        if first_occurrence != 0 and last_occurrence != 0:
+            return last_occurrence - first_occurrence + 1
         else:
-            bigger += 1
-            end = mid - 1
-    
-    return f"{smaller} mniejszych od {x}\n{equal} równych {x}\n{bigger} większych od {x}"
+            return 0
+
+    count_smaller = first_occurrence_function(sorted_lst, x)
+    count_equal = count_occurrences_function(sorted_lst, x)
+    count_bigger = len(sorted_lst) - last_occurrence_function(sorted_lst, x) - 1
 
 
-list1 = [1, 2, 2, 3, 4, 5, 5, 5, 5, 5, 7, 9]
-res = count_sorted_while(list1, 5)
-print(res)
-print()'''
+    return count_smaller, count_equal, count_bigger
+
+
+sorted_list = [1, 2, 2, 3, 4, 5, 5, 5, 5, 5, 7, 9]
+x = 6
+res = count_sorted(sorted_list, x)
+print(f"Liczba elementów mniejszych od {x}: {res[0]}")
+print(f"Liczba elementów równych {x}: {res[1]}")
+print(f"Liczba elementów większych od {x}: {res[2]}")
+print()
 
 
 # ZADANIE 7 wyznaczyć miejsce zerowe funkcji f(x) = x^3 - 2*x^2 + x - 7, przyjmuję, że znajduje się w przedziale [0, 3].
@@ -296,14 +347,18 @@ print("ZADANIE 7")
 # f(0) = -7 i f(3) = 5
 a = 0
 b = 3
-epsilon = 0.0001
 
+# f(-7)
+c = -7
+
+epsilon = 0.0001
+    
 while abs(a - b) > epsilon:
     root = (a + b) / 2
 
     if abs(root**3 - 2 * root**2 + root - 7) <= epsilon:
         break
-    elif (root**3 - 2 * root**2 + root - 7) * (-455) < 0:  # f(x1) * f(a)
+    elif (root**3 - 2 * root**2 + root - 7) * (c**3 - 2 * c**2 + c - 7) < 0:  # f(x1) * f[f(a)]
         b = root
     else:
         a = root
@@ -326,10 +381,10 @@ def does_sqrt_exist(lst, x):
             return f"exists"
         elif j * j < x:
             d = j + 1
-            # przesuwamy się w prawo jeżeli szukana wartość nie znajduje się po lewej
+            # przesuwamy się w prawo jeżeli szukana wartość nie znajduje się po "lewej"
         else:
             g = j - 1
-            # przesuwamy się w lewo jeżeli szukana wartość nie znajduje się po prawej
+            # przesuwamy się w lewo jeżeli szukana wartość nie znajduje się po "prawej"
 
     return f"do not exist"
 
@@ -340,8 +395,10 @@ result = does_sqrt_exist(my_list, 23)
 print(result)
 print()
 
+'''
+# linear search
 
-'''def does_sqrt_exist(lst, x):
+def does_sqrt_exist(lst, x):
     j = 1
 
     while j * j <= x:
@@ -357,13 +414,37 @@ my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
            14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
 result = does_sqrt_exist(my_list, 9)
 print(result)
-print()'''
-
+print()
+'''
 
 # ZADANIE 9
 print("ZADANIE 9")
 
 
+# sposób bez użyca .append i .remove
+
+
+def sort_by_picking_max(lst):
+    n = len(lst)
+
+    for i in range(n - 1, 0, -1):
+        max_index = 0
+        
+        for j in range(1, i + 1):
+            if lst[j] > lst[max_index]:
+                max_index = j
+
+        lst[i], lst[max_index] = lst[max_index], lst[i]
+    
+    return lst
+
+
+my_list = [1, 6, 3, 8, 9, 8, 11]
+res = sort_by_picking_max(my_list)
+print(res)
+print()
+
+'''
 def sort_by_picking(lst):
     res_list = []
 
@@ -374,7 +455,7 @@ def sort_by_picking(lst):
         for i in range(len(lst)):
             if lst[i] > max_elem:
                 max_elem = lst[i]
-        
+
         lst.remove(max_elem)
         res_list.append(max_elem)
 
@@ -385,7 +466,7 @@ my_list = [1, 6, 3, 8, 9, 8, 11]
 res = sort_by_picking(my_list)
 print(res)
 print()
-
+'''
 
 # ZADANIE 10
 print("ZADANIE 10")
@@ -406,4 +487,49 @@ def bubble_sort(list):
 list = [1, 6, 3, 8, 9, 8]
 result = bubble_sort(list)
 print(result)
+print()
+
+
+# ZADANIE 11
+print("ZADANIE 11")
+
+# sposób z pętlą for
+
+
+def circular_shift(lst, k):
+    n = len(lst)
+    # shifted_lst = [0] * n
+    shifted_lst = []
+
+    for index in range(n):
+        # shifted_lst[(index + k) % n] = lst[index]
+        shifted_lst.append(lst[(index + (-k)) % n])
+
+    return shifted_lst
+
+
+my_list = [1, 6, 3, 8, 9, 8, 11, 14]
+res = circular_shift(my_list, 2)
+print(my_list)
+print(res)
+print()
+
+
+# sposób bez użycia pętli for (z pętlą while)
+
+def circular_shift_while(lst, k):
+    n = len(lst)
+    shifted_lst = []
+    index = 0
+
+    while index <= n:
+        shifted_lst.append(lst[(index + (-k)) % n])
+
+    return shifted_lst
+
+
+my_list = [1, 6, 3, 8, 9, 8, 11, 14]
+res = circular_shift(my_list, 2)
+print(my_list)
+print(res)
 print()

@@ -58,6 +58,7 @@ for index in list:
 print(reversed_list)
 print()
 
+
 # ZADANIE 5
 print("ZADANIE 5")
 
@@ -242,7 +243,8 @@ for element in range(len(num_list)):
 print(second_max_value)
 print()
 
-                    # jak wszystkie wartości są takie same, to trzeba dodać warunek None
+
+# jak wszystkie wartości są takie same, to trzeba dodać warunek None
 
 num_list = [1, 1, 1, 1, 1]
 max_value = num_list[0]
@@ -257,6 +259,7 @@ for element in range(len(num_list)):
         second_max_value = num_list[element]
 print(second_max_value)
 print()
+
 
 # ZADANIE 13
 print("ZADANIE 13")
@@ -281,6 +284,7 @@ while list_length > 1:
         break
 print("Losowo wygenerowana i posortowana lista liczb:", list)
 print()
+
 
 # ZADANIE 14
 print("ZADANIE 14")

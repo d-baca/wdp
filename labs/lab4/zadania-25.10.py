@@ -221,12 +221,34 @@ print()
 
 print("ZADANIE 13")
 palindromes = ["kajak", "anna", "oko", "afsasf"]
-'''
+
 for word in palindromes:
     for i in range(len(word) // 2):
         if word[i] == word[len(word) - 1 - i]:
-            print("słowo",word, "to palindrom.")
-        else:
-            print("To nie jest palindrom.")
+            print("słowo", word, "to palindrom.")
+            break
+    else:
+        print("słowo", word, "to nie palindrom.")
 print()
-'''
+
+
+# ZADANIE DODATKOWE 1
+print("ZADANIE DODATKOWE 1")
+
+list1 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+list2 = [1, 6, 4, 2, 9, 11, 34, 3, 2, 2, 2, 5]
+common_elements = 0
+
+for i in range(len(list1)):
+    for j in range(len(list2)):
+        if list1[i] == list2[j]:
+            common_elements += 1
+            break
+
+print(common_elements)
+print()
+
+
+# ZADANIE DODATKOWE 2
+print("ZADANIE DODATKOWE 2")
+
