@@ -1,3 +1,5 @@
+# LISTA DODATKOWA 
+
 # ZADANIE 1
 print()
 print("ZADANIE 1")  # lst = [1,3,5,7,9,2] daje wynik lst = [1,2,3,5,7,9]
@@ -64,14 +66,5 @@ for char in range(len(char_list)):
         
 print(b_list + c_list)
 print()
-
-
-# ZADANIE 4
-print("ZADANIE 4")
-
-
-nested_lists = [[1, 2, 3, 4, 5], [5, 2, 3, 4, 1], [6, 7, 3, 14]]
-
-
 
 
