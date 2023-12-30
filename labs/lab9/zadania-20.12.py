@@ -174,11 +174,103 @@ def power_recursion(a, b):
         return power_recursion(a, b-1) * a
 
 
-#print(power_recursion(5, 0))
-#print()
-    
+# print(power_recursion(5, 0))
+# print()
+
 
 # ZADANIE 8
 # print("ZADANIE 8")
+
+
+def NWD(a, b):
+    if a == b or b == 0:
+        return a
+    if a == 0:
+        return b
+    elif a < b:
+        return NWD(a, b-a)
+    else:
+        return NWD(b, a-b)
+
+
+a = 6
+b = 4
+
+# print(NWD(a, b))
+# print()
+
+
+# ZADANIE 9
+# print("ZADANIE 9")
+
+
+def num_sum_recursion(n):
+    if n == 0:
+        return 0
+    else:
+        return n % 10 + num_sum_recursion(n//10)
+
+
+# n = 24064
+# print(num_sum_recursion(n))
+# print()
+
+
+# ZADANIE 10
+# print("ZADANIE 10")
+
+
+def head(lst):
+    if len(lst) == 0:
+        return 0
+    elif len(lst) == 1:
+        return lst[0]
+    else:
+        return head(lst[:-1])
+
+
+# lst = [1, 5, 3, 2, 8]
+# print(head(lst))
+# print()
+
+
+# ZADANIE 11
+# print("ZADANIE 11")
+
+
+def tail(lst):
+    if len(lst) <= 1:
+        return []
+    else:
+        return [lst[1]] + tail(lst[1:])
+
+
+# lst = [1, 5, 3, 2, 8]
+# print(tail(lst))
+# print()
+
+
+# ZADANIE 12
+# print("ZADANIE 12")
     
 
+def IsEmpty(lst):
+    if len(lst) == 0:
+        return True
+    else:
+        return False
+
+
+def rewers(lst):
+    if IsEmpty(lst):
+        return []
+    else:
+        return rewers(tail(lst)) + [head(lst)]
+
+
+lst = [41, 5, 9, 2, 18]
+reversed_lst = rewers(lst)
+
+print("oryginalna lista:", lst)
+print("lista w odwróconej kolejności:", reversed_lst)
+print("czy pusta?", IsEmpty(reversed_lst))
