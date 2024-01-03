@@ -100,8 +100,8 @@ songs_dict = {
 def replace(d, v, e):
     for key, value in d.items():
         if value == v:
-            d[key] = e 
-       
+            d[key] = e
+
 
 d = {
     "a": 1,
@@ -172,7 +172,7 @@ d = {
 
 
 def ceasar_cipher(message, shift):
-    alphabet = ["A", "Ą", "B", "C", "Ć", "D", "E", "Ę", "F", "G", "H", "I", "J", "K", "L", "M", 
+    alphabet = ["A", "Ą", "B", "C", "Ć", "D", "E", "Ę", "F", "G", "H", "I", "J", "K", "L", "M",
                 "N", "O", "Ó", "P", "Q", "R", "S", "Ś", "T", "U", "V", "W", "X", "Y", "Z", "Ź", "Ż"]
     cipher_dict = {}
 
@@ -200,15 +200,35 @@ encoded_message = ceasar_cipher(message_to_encode, shift)
 
 
 # ZADANIE 7
-print("ZADANIE 7")
+# print("ZADANIE 7")
 
 
+def ceasar_decipher(encrypted_message, shift):
+    alphabet = ["A", "Ą", "B", "C", "Ć", "D", "E", "Ę", "F", "G", "H", "I", "J", "K", "L", "M",
+                "N", "O", "Ó", "P", "Q", "R", "S", "Ś", "T", "U", "V", "W", "X", "Y", "Z", "Ź", "Ż"]
+    decipher_dict = {}
+
+    # tworzenie słownika
+    for i in range(len(alphabet)):
+        char = alphabet[i]
+        new_char = (i - shift) % 32
+        decipher_dict[char] = alphabet[new_char]
+
+    # odszyfrowanie wiadomości
+    deciphered_message = ""
+    for char in encrypted_message:
+        decrypted_char = decipher_dict.get(char, char)
+        deciphered_message += decrypted_char
+
+    return deciphered_message
 
 
+encrypted_message = "ÓHCPA DĆFB, EKTQŃ SXŁN WZRM L UĄGVĘ IOCJ"
+shift = 3
+deciphered_message = ceasar_decipher(encrypted_message, shift)
 
-
-
-
+# print("zakodowana wiadomość:", encrypted_message)
+# print("rozszyfrowana wiadomość:", deciphered_message)
 
 
 # ZADANIE 8
@@ -216,32 +236,186 @@ print("ZADANIE 7")
 
 def roman_to_decimal(roman_numeral):
 
-    roman_dictionary = {"I": 1, 
-                        "V": 5, 
-                        "X": 10, 
-                        "L": 50, 
-                        "C": 100, 
-                        "D": 500, 
+    roman_dictionary = {"I": 1,
+                        "V": 5,
+                        "X": 10,
+                        "L": 50,
+                        "C": 100,
+                        "D": 500,
                         "M": 1000}
     decimal_number = 0
 
     for i in range(len(roman_numeral)):
         current_val = roman_dictionary[roman_numeral[i]]
-    
+
         if i < len(roman_numeral) - 1 and roman_dictionary[roman_numeral[i + 1]] > current_val:
             decimal_number -= current_val
         else:
             decimal_number += current_val
-    
+
     return decimal_number
 
 
 roman_numeral = "MDCD"
-# print(roman_to_decimal(roman_numeral))   
-# print()  
+# print(roman_to_decimal(roman_numeral))
+# print()
 
 
+# ZADANIE 9
+# print("ZADANIE 9")
 
 
+cars = [
+    {
+        "marka": "BMW",
+        "model": "M2 F87",
+        "rok_produkcji": 2021
+    },
 
+    {
+        "marka": "BMW",
+        "model": "M3 G80",
+        "rok_produkcji": 2023
+    },
+
+    {
+        "marka": "BMW",
+        "model": "M4 G82",
+        "rok_produkcji": 2023
+    }
+]
+
+person = [
+    {
+        "imię": "Jan",
+        "naziwsko": "Kowalski",
+        "rok_ur": 1967,
+        "samochody": [cars[0], cars[2]]
+    },
+
+    {
+        "imię": "Dawid",
+        "nazwisko": "Nowak",
+        "rok_ur": 1992,
+        "samochody": [cars[1]]
+    }
+]
+
+# print(person[0]["samochody"])
+# print()
+
+
+# ZADANIE 10
+# print("ZADANIE 10")
+
+
+Polska = {
+    "stolica": "Warszawa",
+    "liczba_mieszkancow": 38000000,
+    "jezyk_urzedowy": "polski"
+}
+
+Niemcy = {
+    "stolica": "Berlin",
+    "liczba_mieszkancow": 83000000,
+    "jezyk_urzedowy": "niemiecki"
+}
+
+Francja = {
+    "stolica": "Paryż",
+    "liczba_mieszkancow": 67000000,
+    "jezyk_urzedowy": "francuski"
+}
+
+
+# ZADANIE 11
+# print("ZADANIE 11")
+
+
+miasto1 = {
+    "nazwa": "Warszawa",
+    "liczba_mieszkancow": 1765,  # w tysiącach
+    "powierzchnia_km2": 517
+}
+
+miasto2 = {
+    "nazwa": "Sopot",
+    "liczba_mieszkańców": 37,
+    "powierzchnia_km2": 17
+}
+
+panstwo = {
+    "nazwa": "Polska",
+    "ludność": 38000,
+    "stolica": miasto1,
+    "miasta": [miasto1, miasto2]
+}
+
+
+# ZADANIE 12
+# print("ZADANIE 12")
+
+
+uczen1 = {
+    "imię": "Jan",
+    "nazwisko": "Kowalski",
+    "przedmiot": "matematyka",
+    "ocena": 4
+}
+
+uczen2 = {
+    "imię": "Dawid",
+    "naziwsko": "Nowak",
+    "przedmiot": "fizyka",
+    "ocena": 3
+}
+
+oceny = [1, 2, 3, 4, 5, 6]
+przedmioty = ["język angielski", "fizyka", "matematyka", "biologia"]
+
+uczen3 = {
+    "imię": "Andrzej",
+    "nazwisko": "Jakiś",
+
+    "wyniki": {
+        "przedmiot1": przedmioty[0],
+        "ocena": oceny[4],
+
+        "przedmiot2": {
+            "nazwa": przedmioty[3],
+            "ocena": oceny[2]
+        }
+    }
+}
+
+# print(f"Przedmiot 2: {uczen3['wyniki']['przedmiot2']['nazwa']}, Ocena: {uczen3['wyniki']['przedmiot2']['ocena']}")
+# print()
+
+
+# ZADANIE 14 ROZDZIAŁ 11 PODRĘCZNIK
+# print("ZADANIE 14 ROZDZIAŁ 11 PODRĘCZNIK ")
+
+
+d = [
+    {'name': 'Todd', 'phone': '555-1414', 'email': 'todd@mail.net'},
+    {'name': 'Helga', 'phone': '555-1618', 'email': 'helga@mail.net'},
+    {'name': 'Princess', 'phone': '555-3141', 'email': ''},
+    {'name': 'LJ', 'phone': '555-2718', 'email': 'lj@mail.net'}
+]
+
+# a)
+
+for dict in d:
+    for key, value in dict.items():
+        if key == "phone" and value.endswith("8"):
+            print(f"{dict['name']}")
+print()
+
+# b)
+
+for dict in d:
+    for key, value in dict.items():
+        if key == "email" and value == '':
+            print(f"{dict['name']}")
+print()
 
